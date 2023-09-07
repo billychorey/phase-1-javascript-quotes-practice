@@ -21,6 +21,19 @@ document.addEventListener("DOMContentLoaded", () => {
         return listHtml;
     }
 
+    // Function to add event listeners for delete and like buttons
+    function addEventListenersToButtons() {
+        const deleteBtns = document.querySelectorAll('.btn-danger');
+        deleteBtns.forEach(deleteBtn => {
+            deleteBtn.addEventListener('click', handleDelete);
+        });
+
+        const likeBtns = document.querySelectorAll('.btn-success');
+        likeBtns.forEach((likeBtn) => {
+            likeBtn.addEventListener('click', handleLike);
+        });
+    }
+
     fetch(fetchUrl)
         .then((res) => res.json())
         .then((data) => {
@@ -30,18 +43,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 const id = item.id;
                 const quotationHtml = createQuotationHTML(quotationText, author, id);
                 list.appendChild(quotationHtml);
-
-                const deleteBtns = document.querySelectorAll('.btn-danger');
-
-                deleteBtns.forEach(deleteBtn => {
-                    deleteBtn.addEventListener('click', handleDelete);
-                });
-
-                const likeBtns = document.querySelectorAll('.btn-success');
-                likeBtns.forEach((likeBtn) => {
-                    likeBtn.addEventListener('click', handleLike)
-                })
             });
+
+            addEventListenersToButtons(); // Add initial event listeners
 
             submit.addEventListener('click', handleSubmit);
 
@@ -74,9 +78,10 @@ document.addEventListener("DOMContentLoaded", () => {
                         const newQuotationHtml = createQuotationHTML(newData.quote, newData.author, newData.id);
                         list.appendChild(newQuotationHtml);
 
-                        // Clear input fields
                         quote.value = '';
                         author.value = '';
+
+                        addEventListenersToButtons(); // Add event listeners for the new quotation
                     })
                     .catch((error) => {
                         console.error("Error adding new data:", error);
@@ -88,9 +93,9 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error("Error fetching data:", error);
         });
 
-    // DELETE
+    // DELETE to delete a quotation and surrounding stuff
     function handleDelete() {
-        const liToDelete = this.closest("li"); // Replace with the actual ID to delete
+        const liToDelete = this.closest("li");
         const idToDelete = liToDelete.id;
         console.log(idToDelete);
         fetch(`${deleteUrl}/${idToDelete}`, {
@@ -98,7 +103,6 @@ document.addEventListener("DOMContentLoaded", () => {
         })
             .then(response => {
                 if (response.ok) {
-                    // Handle success
                     return response.json();
                 } else {
                     throw new Error("Delete operation failed");
@@ -118,6 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function handleLike() {
         const quoteId = this.getAttribute("data-quote-id"); // Get the quote ID from the button's data attribute
 
+        // Define the data you want to send in the request body
         const data = {
             quoteId: parseInt(quoteId) // Parse the quote ID to an integer
         };
@@ -139,6 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 likeToUpdate.textContent = newLikes;
             })
             .catch(error => {
+                // Handle errors
                 console.error("Error adding like:", error);
             });
     }

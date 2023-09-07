@@ -54,6 +54,11 @@
       "id": 11,
       "quote": "The here and now is all we have, and if we play it right it's all we'll need.",
       "author": "Ann Richards"
+    },
+    {
+      "quote": "sfsdf",
+      "author": "aesfwew",
+      "id": 12
     }
   ],
   "likes": [
@@ -119,6 +124,14 @@
     {
       "quoteId": 9,
       "id": 15
+    },
+    {
+      "quoteId": 11,
+      "id": 16
+    },
+    {
+      "quoteId": 11,
+      "id": 17
     }
   ]
 }
