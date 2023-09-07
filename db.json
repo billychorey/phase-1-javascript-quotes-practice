@@ -60,12 +60,65 @@
     {
       "id": 1,
       "quoteId": 1,
-      "createdAt": 1558524356
+      "createdAt": 1558524356,
+      "likes": 1
     },
     {
       "quoteId": 10,
       "id": 2,
       "createdAt": 1558524358
+    },
+    {
+      "quoteId": 1,
+      "id": 3
+    },
+    {
+      "quoteId": 2,
+      "id": 4
+    },
+    {
+      "quoteId": 2,
+      "id": 5
+    },
+    {
+      "quoteId": 6,
+      "id": 6
+    },
+    {
+      "quoteId": 9,
+      "id": 7
+    },
+    {
+      "quoteId": 9,
+      "id": 8
+    },
+    {
+      "quoteId": 9,
+      "id": 9
+    },
+    {
+      "quoteId": 9,
+      "id": 10
+    },
+    {
+      "quoteId": 9,
+      "id": 11
+    },
+    {
+      "quoteId": 9,
+      "id": 12
+    },
+    {
+      "quoteId": 9,
+      "id": 13
+    },
+    {
+      "quoteId": 9,
+      "id": 14
+    },
+    {
+      "quoteId": 9,
+      "id": 15
     }
   ]
 }
